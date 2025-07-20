@@ -22,6 +22,17 @@ func NewSubscriptionHandler(service service.SubscriptionServiceInterface) *Subsc
 	return &SubscriptionHandler{service: service}
 }
 
+func (h *SubscriptionHandler) Register(r *gin.Engine) {
+	grp := r.Group("/api/v1/subscriptions")
+	grp.POST("", h.Create)
+	grp.GET("/:id", h.GetByID)
+	grp.PUT("/:id", h.Update)
+	grp.DELETE("/:id", h.Delete)
+	grp.GET("", h.GetAll)
+
+	grp.GET("/api/v1/summary", h.GetSum)
+}
+
 func (h *SubscriptionHandler) Create(c *gin.Context) {
 	var req service.CreateSubscriptionRequest
 
