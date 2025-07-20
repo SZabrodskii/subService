@@ -9,8 +9,8 @@ type Subscription struct {
 	UserID      string     `gorm:"type:uuid;not null" json:"user_id"`
 	StartDate   time.Time  `gorm:"type:date;not null" json:"start_date"`
 	EndDate     *time.Time `gorm:"type:date" json:"end_date,omitempty"`
-	CreatedAt   time.Time  `gorm:"type:autoCreateTime" json:"created_at"`
-	UpdatedAt   time.Time  `gorm:"type:autoUpdateTime" json:"updated_at"`
+	CreatedAt   time.Time  `gorm:"type:timestamp;autoCreateTime" json:"created_at"`
+	UpdatedAt   time.Time  `gorm:"type:timestamp;autoUpdateTime" json:"updated_at"`
 }
 
 type SubscriptionResponse struct {
