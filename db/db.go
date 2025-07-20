@@ -7,6 +7,7 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"subService/config"
+	"subService/model"
 )
 
 func Provide() fx.Option {
