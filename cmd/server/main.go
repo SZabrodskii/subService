@@ -1,3 +1,8 @@
+// @title Subscription Service API
+// @version 1.0
+// @description REST-сервис для управления пользовательскими подписками.
+// @host localhost:8040
+// @BasePath /api/v1
 package main
 
 import (
