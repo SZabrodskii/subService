@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"github.com/joho/godotenv"
 	"github.com/spf13/viper"
 	"go.uber.org/fx"
 )
@@ -17,6 +18,7 @@ func Provide() fx.Option {
 }
 
 func NewConfig() (*Config, error) {
+	_ = godotenv.Load(".env")
 	v := viper.New()
 	v.SetConfigName("config")
 	v.SetConfigType("yaml")
