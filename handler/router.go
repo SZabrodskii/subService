@@ -7,6 +7,7 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"go.uber.org/fx"
 	"subService/config"
+	_ "subService/docs"
 )
 
 func ProvideRouter() fx.Option {
@@ -18,7 +19,9 @@ func ProvideRouter() fx.Option {
 
 func NewRouter() *gin.Engine {
 	r := gin.Default()
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(
+		swaggerFiles.Handler,
+		ginSwagger.URL("/swagger/doc.json")))
 	return r
 }
 
